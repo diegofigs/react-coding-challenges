@@ -32,15 +32,18 @@ function Messages() {
   const [isTyping, setIsTyping] = useState(false);
   const messageRef = useRef(null);
 
-  const sendMessage = useCallback((text) => {
-    const userMessage = { id: messageList.length, user, message: text };
-    socket.emit("user-message", text);
-    
-    playSend();
-    setMessage("");
-    setMessageList((list) => [...list, userMessage]);
-    setLatestMessage("bot", text);
-  }, [messageList.length, setLatestMessage, playSend]);
+  const sendMessage = useCallback(
+    (text) => {
+      const userMessage = { id: messageList.length, user, message: text };
+      socket.emit("user-message", text);
+
+      playSend();
+      setMessage("");
+      setMessageList((list) => [...list, userMessage]);
+      setLatestMessage("bot", text);
+    },
+    [messageList.length, setLatestMessage, playSend]
+  );
 
   const handleBotMessage = useCallback(
     (text) => {
