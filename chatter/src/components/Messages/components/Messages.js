@@ -50,7 +50,6 @@ function Messages() {
       setIsTyping(false);
       setLatestMessage("bot", text);
       setMessageList((list) => [...list, botMessage]);
-      messageRef.current.scrollIntoView();
     },
     [messageList.length, setLatestMessage, playReceive]
   );
